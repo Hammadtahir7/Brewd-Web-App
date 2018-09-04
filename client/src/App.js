@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 class App extends Component {
   state = {
@@ -30,9 +31,27 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <p className="App-intro">{this.state.response}</p>
+        <Map
+        google={this.props.google}
+        initialCenter={{
+          lat: -37.82,
+          lng: 144.95
+        }}
+        zoom={15}
+        onClick={this.onMapClicked}
+        >
+
+        <Marker onClick={this.onMarkerClick}
+        name={'Current location'} />
+
+        <InfoWindow onClose={this.onInfoWindowClose}>
+        </InfoWindow>
+        </Map>
       </div>
     );
   }
 }
 
-export default App;
+export default GoogleApiWrapper({
+  apiKey: ("AIzaSyD9JHkbadijmTIImbs3SMTsMvte7bkBFaE")
+})(App)
