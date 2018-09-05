@@ -14,11 +14,18 @@ mongoose.connect('mongodb://heroku_bm1sjwq9:mtgc4ljkntakqct2stadgv6692@ds145752.
        }
      });
 
+mongoose.Promise = global.Promise;
+
 const port = process.env.PORT || 5000;
+
+app.use(bodyParser.json());
+
+app.use('/api', require('./api'));
+
 // API calls
-app.get('/api/hello', (req, res) => {
-  res.send({ express: 'Hello From Express' });
-});
+//app.get('/api/hello', (req, res) => {
+//  res.send({ express: 'Hello From Express' });
+//});
 if (process.env.NODE_ENV === 'production') {
   // Serve any static files
   app.use(express.static(path.join(__dirname, 'client/build')));
