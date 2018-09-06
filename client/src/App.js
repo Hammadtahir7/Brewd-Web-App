@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import './styles.css';
 import {Map, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 
@@ -46,8 +47,33 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">Find Your Coffee!</h1>
         </header>
+        <div id="brewd-container">
+          <form id="search" onSubmit={this.handleSubmit}>
+            <div id="coffee">
+              <label>
+              <select title="Cofee Roasters" ref="coff">
+                <option value="roaster1">Roaster 1</option>
+                <option value="roaster2">Roaster 2</option>
+              </select>
+              </label>
+            </div>
+            <br />
+            <div id="milk">
+              <label>
+              <select title="Milk Brands" ref="milk">
+                <option value="milk1">Milk 1</option>
+                <option value="milk2">Milk 2</option>
+              </select>
+              </label>
+            </div>
+            <br />
+            <div>
+              <input type="submit" value="Find Cafes" />
+            </div>
+          </form>
+        </div>
         <ul className="App-intro">{brewd}</ul>
         <Map google={this.props.google}
           center={{lat: -37.82, lng: 144.95}}
