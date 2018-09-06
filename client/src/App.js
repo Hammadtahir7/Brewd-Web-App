@@ -10,21 +10,6 @@ class App extends Component {
     response: []
   };
 
-  componentDidMount() {
-    this.callApi()
-      .then(res => {this.setState({ response: res });console.log(res);})
-      .catch(err => console.log(err));
-  }
-
-  callApi = async () => {
-    const response = await fetch('/api/brewd?coff=roaster1&milk=milk1');
-    const body = await response.json();
-
-    if (response.status !== 200) throw Error(body.message);
-
-    return body;
-  };
-
   render() {
     var brewd = this.state.response;
     brewd = brewd.map(function(brewd, index){
@@ -50,7 +35,7 @@ class App extends Component {
           <h1 className="App-title">Find Your Coffee!</h1>
         </header>
         <div id="brewd-container">
-          <form id="search" onSubmit={this.handleSubmit}>
+          <form id="search" onSubmit={this.handleSubmit.bind(this)}>
             <div id="coffee">
               <label>
               <select title="Cofee Roasters" ref="coff">
@@ -73,8 +58,9 @@ class App extends Component {
               <input type="submit" value="Find Cafes" />
             </div>
           </form>
+          <ul className="App-intro">{brewd}</ul>
         </div>
-        <ul className="App-intro">{brewd}</ul>
+
         <Map google={this.props.google}
           center={{lat: -37.82, lng: 144.95}}
           zoom={13}>
@@ -82,6 +68,15 @@ class App extends Component {
         </Map>
       </div>
     );
+  }
+  handleSubmit(e) {
+    e.preventDefault();
+    var coff = this.refs.coff.value;
+    var milk = this.refs.milk.value;
+    fetch('/api/brewd?coff='+coff+'&milk='+milk).then(function(data){
+      return data.json();
+    }).then(res => {this.setState({ response: res });console.log(res);})
+    .catch(err => console.log(err));
   }
 }
 
