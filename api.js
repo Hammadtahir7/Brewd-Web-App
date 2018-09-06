@@ -3,26 +3,15 @@ const router = express.Router();
 const Brewd = require('./brewd');
 
 // get a list of ninjas from the db
-router.get('/brewd', function(req, res, next){
- Brewd.find({coffeeRoaster: req.query.coff, milkBrand: req.query.milk}).then(function(brewd){
-   res.send(brewd);
+router.get('/brewd', (req, res, next) => {
+  Brewd.find({coffeeRoaster: req.query.coff, milkBrand: req.query.milk}).then(function(brewd){
+    res.send(brewd);
+    console.log(brewd);
   });
- /*Brewd.aggregate().near({
-  near:
-  {
-   'type': 'Point',
-    'coordinates': [parseFloat(req.query.lng), parseFloat(req.query.lat)] },
-    maxDistance: 100000,
-    spherical: true,
-    distanceField: "dis"
-   }
- ).then(function(brewd){
-   res.send(brewd);
- });*/
 });
 
 // add a new ninja to the db
-router.post('/brewd', function(req, res, next){
+router.post('/brewd', (req, res, next) => {
     Brewd.create(req.body).then(function(brewd){
         res.send(brewd);
     }).catch(next);

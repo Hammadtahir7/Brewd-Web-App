@@ -26,7 +26,15 @@ const BrewdSchema = new Schema({
     milkBrand: {
       type: String,
       required: [true, 'Milk brand field is required']
-    }
+    },
+//    loc: {
+      lat:{
+        type: Number
+      },
+      lng:{
+        type: Number
+      }
+//    }
 });
 
 const Brewd = mongoose.model('brewd', BrewdSchema);

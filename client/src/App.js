@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import {Map, Marker, GoogleApiWrapper} from 'google-maps-react';
+
 
 class App extends Component {
   state = {
-    response: ''
+    response: []
   };
 
   componentDidMount() {
     this.callApi()
-      .then(res => this.setState({ response: res.express }))
+      .then(res => {this.setState({ response: res });console.log(res);})
       .catch(err => console.log(err));
   }
 
   callApi = async () => {
-    const response = await fetch('/api/hello');
+    const response = await fetch('/api/brewd?coff=roaster1&milk=milk1');
     const body = await response.json();
 
     if (response.status !== 200) throw Error(body.message);
@@ -24,28 +25,34 @@ class App extends Component {
   };
 
   render() {
+    var brewd = this.state.response;
+    brewd = brewd.map(function(brewd, index){
+    return(
+          <li key={index}>
+            <span className="name">{brewd.cafeName}</span>
+          </li>);
+    });
+
+    var loc = this.state.response;
+    loc = loc.map(function(loc, index){
+    return(
+      <Marker
+        position={{lat: loc.lat, lng: loc.lng}}
+      key={index}/>
+    );
+    });
+
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <p className="App-intro">{this.state.response}</p>
-        <Map
-        google={this.props.google}
-        initialCenter={{
-          lat: -37.82,
-          lng: 144.95
-        }}
-        zoom={15}
-        onClick={this.onMapClicked}
-        >
-
-        <Marker onClick={this.onMarkerClick}
-        name={'Current location'} />
-
-        <InfoWindow onClose={this.onInfoWindowClose}>
-        </InfoWindow>
+        <ul className="App-intro">{brewd}</ul>
+        <Map google={this.props.google}
+          center={{lat: -37.82, lng: 144.95}}
+          zoom={13}>
+          {loc}
         </Map>
       </div>
     );
