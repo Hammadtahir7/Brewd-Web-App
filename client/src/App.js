@@ -38,7 +38,8 @@ class App extends Component {
           <form id="search" onSubmit={this.handleSubmit.bind(this)}>
             <div id="coffee">
               <label>
-              <select title="Cofee Roasters" ref="coff">
+              <select ref="coff">
+                <option value="">My Beans</option>
                 <option value="roaster1">Roaster 1</option>
                 <option value="roaster2">Roaster 2</option>
               </select>
@@ -47,7 +48,8 @@ class App extends Component {
             <br />
             <div id="milk">
               <label>
-              <select title="Milk Brands" ref="milk">
+              <select ref="milk">
+                <option value="">My Milk</option>
                 <option value="milk1">Milk 1</option>
                 <option value="milk2">Milk 2</option>
               </select>
@@ -60,8 +62,7 @@ class App extends Component {
           </form>
           <ul className="App-intro">{brewd}</ul>
         </div>
-
-        <Map google={this.props.google}
+        <Map style={{ height: '100vh', width: '97%', margin: '0 auto'}} google={this.props.google}
           center={{lat: -37.82, lng: 144.95}}
           zoom={13}>
           {loc}

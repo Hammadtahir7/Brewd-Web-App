@@ -59,8 +59,9 @@ img{
 .profile-img{
     border-radius: 50%;
 }
-
-
+Map{
+  margin: 0 auto;
+}
 #homepage{
     max-width: 800px;
     margin: 60px auto;
