@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import './styles.css';
 import {Map, Marker, GoogleApiWrapper} from 'google-maps-react';
@@ -30,11 +29,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Find Your Coffee!</h1>
-        </header>
-        <div id="brewd-container">
+        <div className="brewd-container">
           <form id="search" onSubmit={this.handleSubmit.bind(this)}>
             <div id="coffee">
               <label>
