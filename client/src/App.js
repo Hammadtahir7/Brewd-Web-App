@@ -50,7 +50,7 @@ class App extends Component {
             </Input>
           </Col>
             <Col xs="2">
-              <Button block type="submit">Find Cafes</Button>
+              <Button color="success" block type="submit">Find Cafes</Button>
               </Col>
               </Row>
           </Form>

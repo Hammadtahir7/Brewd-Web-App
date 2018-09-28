@@ -16,8 +16,8 @@ class Usertype extends Component {
         <hr className="my-2" />
         <p>Please Confirm.</p>
           <Row>
-          <Col sm={{ size: 3, offset: 3 }}><Button size="lg" block href="#NU" color="primary">New User</Button></Col>
-          <Col sm={{ size: 3}}><Button size="lg" block href="#RU" color="primary">Registered User</Button></Col>
+          <Col sm={{ size: 3, offset: 3 }}><Button size="lg" block href="#NU" color="success">New User</Button></Col>
+          <Col sm={{ size: 3}}><Button size="lg" block href="#RU" color="success">Registered User</Button></Col>
           </Row>
       </Jumbotron>
       </Col>

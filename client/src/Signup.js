@@ -111,7 +111,7 @@ function postData(url = ``, data = {}) {
           <Label>Mobile No.</Label>
           <Input type="text" name="mobileno" id="mobileNo" placeholder="0123456789"/>
         </FormGroup>
-        <Button href="#RU">Sign Up</Button>
+        <Button href="#RU" color="success">Sign Up</Button>
       </Form>
     </Card>
     </Container>
