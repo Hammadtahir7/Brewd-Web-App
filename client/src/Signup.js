@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Container, Row, Col, Jumbotron, Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Card, Container, Row, Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 
 
@@ -111,7 +111,7 @@ function postData(url = ``, data = {}) {
           <Label>Mobile No.</Label>
           <Input type="text" name="mobileno" id="mobileNo" placeholder="0123456789"/>
         </FormGroup>
-        <Button>Sign Up</Button>
+        <Button href="#RU">Sign Up</Button>
       </Form>
     </Card>
     </Container>
