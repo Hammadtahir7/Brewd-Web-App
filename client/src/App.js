@@ -38,13 +38,13 @@ class App extends Component {
           <Form onSubmit={this.handleSubmit.bind(this)}>
             <Row>
           <Col sm={{ size: 2, offset: 3}}>
-            <Input type="select" innerRef={(coff) => (this.coff= coff)}>
+            <Input className="input1" type="select" innerRef={(coff) => (this.coff= coff)}>
               <option value="roaster1">Roaster 1</option>
               <option value="roaster2">Roaster 2</option>
             </Input>
             </Col>
             <Col xs="2">
-            <Input  type="select" innerRef={(milk) => (this.milk= milk)}>
+            <Input className="input1"  type="select" innerRef={(milk) => (this.milk= milk)}>
               <option value="milk1">Milk 1</option>
               <option value="milk2">Milk 2</option>
             </Input>
@@ -57,7 +57,8 @@ class App extends Component {
   </Row>
   <Row className="row2">
           <Col>
-            <Table size="sm">
+            <Card className="cafelist cafelist-text">
+            <Table  size="sm">
         <thead>
           <tr>
             <th></th>
@@ -70,6 +71,7 @@ class App extends Component {
           {brewd}
         </tbody>
       </Table>
+      </Card>
           </Col>
         </Row>
         <Row className="row2">
