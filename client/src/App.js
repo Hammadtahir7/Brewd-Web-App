@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './styles.css';
 import {Map, Marker, GoogleApiWrapper} from 'google-maps-react';
-import { ListGroup, ListGroupItem, Card, Container, Row, Col, Button, Form, Input } from 'reactstrap';
+import { Table, ListGroup, ListGroupItem, Card, Container, Row, Col, Button, Form, Input } from 'reactstrap';
 
 
 class App extends Component {
@@ -13,9 +13,10 @@ class App extends Component {
     var brewd = this.state.response;
     brewd = brewd.map(function(brewd, index){
     return(
-          <ListGroupItem color="success" key={index}>
-            <span className="name">{brewd.cafeName}</span>
-          </ListGroupItem>);
+      <tr key={index}>
+        <th scope="row"></th>
+        <td>{brewd.cafeName}</td>
+      </tr>)
     });
 
     var loc = this.state.response;
@@ -56,7 +57,19 @@ class App extends Component {
   </Row>
   <Row className="row2">
           <Col>
-          <ListGroup>{brewd}</ListGroup>
+            <Table size="sm">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Cafe Name</th>
+            <th>Adress</th>
+            <th>Timing</th>
+          </tr>
+        </thead>
+        <tbody>
+          {brewd}
+        </tbody>
+      </Table>
           </Col>
         </Row>
         <Row className="row2">

@@ -37,12 +37,9 @@ class Header extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/components/">Components</NavLink>
+                <NavLink href="/app">Find Cafe</NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
-              </NavItem>
-              <Button color="warning">warning</Button>{' '}
+              <Button href="/login" color="warning">Sign In</Button>{' '}
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
                   Options
