@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import App from './App';
 import Header from './Header';
 import Usertype from './Usertype';
@@ -9,9 +10,17 @@ import Login from './Login';
 import registerServiceWorker from './registerServiceWorker';
 
 
-ReactDOM.render(<Header />, document.getElementById('header'));
-ReactDOM.render(<Usertype />, document.getElementById('usertype'));
-ReactDOM.render(<Signup />, document.getElementById('signup'));
-ReactDOM.render(<Login />, document.getElementById('login'));
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <Router>
+      <div>
+        <Route path="/" component={Header} />
+        <Route exact path="/" component={Usertype} />
+        <Route exact path="/signup" component={Signup} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/app" component={App} />
+      </div>
+  </Router>,
+  document.getElementById('root')
+)
+
 registerServiceWorker();

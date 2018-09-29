@@ -32,7 +32,7 @@ class Header extends Component {
     return (
       <div className="navbar1">
         <Navbar dark expand="md">
-          <NavbarBrand href="#"><img src="favicon.png"/></NavbarBrand>
+          <NavbarBrand href="/"><img alt="logo" src="favicon.png"/></NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
