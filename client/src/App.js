@@ -70,17 +70,17 @@ class App extends Component {
             <Row>
           <Form onSubmit={this.handleSubmit.bind(this)}>
             <Row>
-          <Col sm={{ size: 2, offset: 3}}>
+          <Col className="select" sm={{ size: 2, offset: 3}}>
             <Input className="input1" type="select" innerRef={(coff) => (this.coff= coff)}>
               {roaster}
             </Input>
             </Col>
-            <Col xs="2">
+            <Col className="select" sm={{ size: 2}}>
             <Input className="input1"  type="select" innerRef={(milk) => (this.milk= milk)}>
               {milk}
             </Input>
           </Col>
-            <Col xs="2">
+            <Col className="select" sm={{ size: 2}}>
               <Button className="butt" block type="submit">Find Cafes</Button>
               </Col>
               </Row>
@@ -108,7 +108,7 @@ class App extends Component {
         </Row>
         <Row className="row2">
           <Col>
-        <Map style={{width: "97%"}}google={this.props.google}
+        <Map style={{height: "100%", width: "97%"}}google={this.props.google}
           center={{lat: -37.82, lng: 144.95}}
           zoom={10}>
           {loc}
