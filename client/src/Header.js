@@ -12,6 +12,7 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem } from 'reactstrap';
+  import { Link } from 'react-router-dom';
 
 
 class Header extends Component {
@@ -45,9 +46,11 @@ class Header extends Component {
                   Options
                 </DropdownToggle>
                 <DropdownMenu right>
+                  <Link to="/admin" style={{ textDecoration: 'none' }}>
                   <DropdownItem>
-                    Option 1
+                    Admin
                   </DropdownItem>
+                </Link>
                   <DropdownItem>
                     Option 2
                   </DropdownItem>

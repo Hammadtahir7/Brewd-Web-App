@@ -7,6 +7,7 @@ import Header from './Header';
 import Usertype from './Usertype';
 import Signup from './Signup';
 import Login from './Login';
+import Admin from './admin';
 import registerServiceWorker from './registerServiceWorker';
 
 
@@ -18,6 +19,7 @@ ReactDOM.render(
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/app" component={App} />
+        <Route exact path="/admin" component={Admin} />
       </div>
   </Router>,
   document.getElementById('root')

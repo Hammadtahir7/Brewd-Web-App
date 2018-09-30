@@ -18,12 +18,17 @@ body{
   width: 100vw;
 }
 
+
 .search-cafe{
   height: 100vh;
   width: 100vw;
 }
 
 .signupform{
+  padding: 2em;
+}
+
+.adminform{
   padding: 2em;
 }
 

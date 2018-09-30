@@ -1,21 +1,54 @@
 import React, { Component } from 'react';
 import './styles.css';
 import {Map, Marker, GoogleApiWrapper} from 'google-maps-react';
-import { Table, ListGroup, ListGroupItem, Card, Container, Row, Col, Button, Form, Input } from 'reactstrap';
+import { Table, Card, Container, Row, Col, Button, Form, Input } from 'reactstrap';
 
 
 class App extends Component {
-  state = {
-    response: []
-  };
+  constructor(props) {
+    super(props);
+    this.state = {response: [], rl: [], ml: []};
+    this.handleLoad = this.handleLoad.bind(this);
+  }
+
+  componentDidMount() {
+     window.addEventListener('load', this.handleLoad);
+  }
+
+  handleLoad() {
+    fetch('/api/brewd/roasterList/').then(function(data){
+      return data.json();
+    }).then(res => {this.setState({rl: res });console.log(res);})
+    .catch(err => console.log(err));
+    fetch('/api/brewd/milkList/').then(function(data){
+      return data.json();
+    }).then(res => {this.setState({ml: res });console.log(res);})
+    .catch(err => console.log(err));
+  }
 
   render() {
+
+    var roaster = this.state.rl;
+    roaster = roaster.map(function(roaster, index){
+    return(
+      <option key={index} value={roaster}>{roaster}</option>)
+    });
+
+    var milk = this.state.ml;
+    milk = milk.map(function(milk, index){
+    return(
+      <option key={index} value={milk}>{milk}</option>)
+    });
+
     var brewd = this.state.response;
     brewd = brewd.map(function(brewd, index){
     return(
       <tr key={index}>
         <th scope="row"></th>
         <td>{brewd.cafeName}</td>
+        <td>{brewd.address}</td>
+        <td>{brewd.suburb}</td>
+        <td>{brewd.city}</td>
       </tr>)
     });
 
@@ -39,14 +72,12 @@ class App extends Component {
             <Row>
           <Col sm={{ size: 2, offset: 3}}>
             <Input className="input1" type="select" innerRef={(coff) => (this.coff= coff)}>
-              <option value="roaster1">Roaster 1</option>
-              <option value="roaster2">Roaster 2</option>
+              {roaster}
             </Input>
             </Col>
             <Col xs="2">
             <Input className="input1"  type="select" innerRef={(milk) => (this.milk= milk)}>
-              <option value="milk1">Milk 1</option>
-              <option value="milk2">Milk 2</option>
+              {milk}
             </Input>
           </Col>
             <Col xs="2">
@@ -63,8 +94,9 @@ class App extends Component {
           <tr>
             <th></th>
             <th>Cafe Name</th>
-            <th>Adress</th>
-            <th>Timing</th>
+            <th>Address</th>
+            <th>Suburb</th>
+            <th>City</th>
           </tr>
         </thead>
         <tbody>
@@ -78,7 +110,7 @@ class App extends Component {
           <Col>
         <Map style={{width: "97%"}}google={this.props.google}
           center={{lat: -37.82, lng: 144.95}}
-          zoom={12}>
+          zoom={10}>
           {loc}
         </Map>
         </Col>
