@@ -63,13 +63,13 @@ class App extends Component {
 
     return (
       <div id="SC" className="search-cafe">
-        <div class="container h-100">
-          <div class="row h-100 justify-content-center align-items-center">
-        <Container className="search-cafe-container">
           <Card className="search-cafe-card">
-            <Row>
+            <Container className="row1">
+              <div class="container h-100">
+                <div class="row h-100 justify-content-center align-items-center">
+
           <Form onSubmit={this.handleSubmit.bind(this)}>
-            <Row>
+            <Row >
           <Col className="select" sm={{ size: 2, offset: 3}}>
             <Input className="input1" type="select" innerRef={(coff) => (this.coff= coff)}>
               {roaster}
@@ -85,10 +85,13 @@ class App extends Component {
               </Col>
               </Row>
           </Form>
-  </Row>
-  <Row className="row2">
+  </div></div>
+          </Container>
+          <Container className="row2">
+  <Row >
           <Col>
             <Card className="cafelist cafelist-text">
+              <div className="tab">
             <Table  size="sm">
         <thead>
           <tr>
@@ -103,21 +106,24 @@ class App extends Component {
           {brewd}
         </tbody>
       </Table>
+      </div>
       </Card>
           </Col>
         </Row>
-        <Row className="row2">
-          <Col>
-        <Map style={{height: "100%", width: "97%"}}google={this.props.google}
-          center={{lat: -37.82, lng: 144.95}}
-          zoom={10}>
+      </Container>
+      <Container className="row2">
+        <Row style={{height: "100%",width: "100%", margin:"0"}}>
+          <Col style={{padding: "0", overflow: "hidden"}}>
+            <Map style={{height: "46vh", width: "100%"}} google={this.props.google}
+              center={{lat: -37.82, lng: 144.95}}
+              zoom={10}>
           {loc}
         </Map>
         </Col>
         </Row>
-        </Card>
         </Container>
-      </div></div></div>
+        </Card>
+      </div>
     );
   }
   handleSubmit(e) {
